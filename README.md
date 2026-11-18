@@ -1,32 +1,66 @@
-# React + TypeScript + Vite
+# Stanley Town
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+My personal website, built as a tiny explorable pixel town. Instead of scrolling a page, visitors walk a character around and step into buildings, each holding one part of my story as a Machine Learning Engineer.
 
-Currently, two official plugins are available:
+Prefer the plain version? Press **Quick view** in the top bar, or open the site with `?view=resume`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## The town
 
-## React Compiler
+| Place | What's inside |
+| --- | --- |
+| 🏠 Stanley's Home | Summary and everyday toolkit |
+| ✈️ tiket.com HQ | ML Engineer role (2022–2025), with headline numbers |
+| 🤖 AI-Levate | AI Engineer freelance role (2026) |
+| 🧪 Project Lab | Side projects: ESCI Search, IncidentBench, Jev Resume Screening, TikTekTo |
+| ⚒️ Skills Forge | Skills, grouped by area |
+| 🎓 University | University of Melbourne and Bandung Institute of Technology |
+| 📚 Library | Publication (ICAICTA 2022) |
+| ✉️ Mailbox | Email, LinkedIn, GitHub |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Visit all eight places to complete the quest, and pick up the 8 ⚡ GPU credits scattered around for fun facts. Progress is saved in the browser and can be reset from the Quests menu.
 
-## Expanding the Oxlint configuration
+## Controls
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+| Action | Keyboard | Mouse / touch |
+| --- | --- | --- |
+| Move | WASD or arrow keys | Click a tile, or use the on-screen D-pad |
+| Walk to a building | — | Click it, or pick it in the Quests menu |
+| Interact / next page | E, Space or Enter | A button, or Next |
+| Close a dialog | Esc | ✕ |
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+## Running locally
+
+Requires Node.js 20.19+ or 22.12+ (Vite's minimum).
+
+```bash
+npm install
+npm run dev      # start the dev server
+npm run build    # type-check and build to dist/
+npm run preview  # serve the production build
+npm run lint     # oxlint
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+The build is a static site in `dist/`, so it can be hosted on Vercel, Netlify, GitHub Pages or any static host.
+
+## Project layout
+
+```
+src/
+  data/resume.ts       All site content; edit this to update the resume
+  content/scripts.tsx  Dialog pages shown for each building
+  game/map.ts          Tile map, buildings, coins, pathfinding
+  game/useGame.ts      Movement loop and keyboard input
+  game/sprites.ts      Pixel-art player frames
+  components/          World, Player, HUD, DialogBox, QuickView, MobilePad
+  lib/                 localStorage progress, text helpers
+```
+
+### Updating content
+
+- **Resume text** lives in `src/data/resume.ts`. Wrap text in `**double asterisks**` to make it bold. Both the game and Quick view read from this file.
+- **What each building says** is in `src/content/scripts.tsx`.
+- **The map** is the `MAP_ROWS` grid in `src/game/map.ts` (`T` tree, `~` water, `#` path, `f` flowers, `.` grass). Buildings, their door tiles and the coins are defined below it.
+
+## Built with
+
+React 19, TypeScript and Vite. There's no game engine: the map is a CSS grid, the player is an SVG pixel sprite, and fonts come from Google Fonts (Press Start 2P, Pixelify Sans, Inter).
