@@ -1,0 +1,76 @@
+.og {
+  width: 1200px;
+  height: 630px;
+}
+
+.og .world {
+  transition: none;
+}
+
+.og-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 500;
+  background: linear-gradient(90deg, rgba(14, 18, 36, 0.78) 0%, rgba(14, 18, 36, 0.45) 48%, rgba(14, 18, 36, 0) 75%);
+  pointer-events: none;
+}
+
+.og-card {
+  position: absolute;
+  left: 64px;
+  top: 50%;
+  translate: 0 -50%;
+  z-index: 600;
+  width: 640px;
+  padding: 34px 38px 36px;
+  background: var(--ink);
+  color: var(--paper);
+  border: 5px solid var(--paper);
+  border-radius: 6px;
+  box-shadow:
+    0 0 0 5px var(--ink),
+    10px 10px 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.og-kicker {
+  margin: 0 0 22px;
+  font-family: var(--pixel);
+  font-size: 15px;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+
+.og-card h1 {
+  margin: 0 0 18px;
+  font-family: var(--pixel);
+  font-size: 34px;
+  line-height: 1.35;
+}
+
+.og-role {
+  margin: 0 0 4px;
+  font-family: var(--body);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--teal);
+}
+
+.og-place {
+  margin: 0 0 26px;
+  font-family: var(--body);
+  font-size: 26px;
+  color: var(--paper);
+  opacity: 0.85;
+}
+
+.og-url {
+  display: inline-block;
+  margin: 0;
+  padding: 10px 14px;
+  font-family: var(--pixel);
+  font-size: 16px;
+  background: var(--gold);
+  color: var(--ink);
+  border: 3px solid var(--paper);
+  border-radius: 4px;
+}

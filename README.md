@@ -61,6 +61,19 @@ src/
 - **What each building says** is in `src/content/scripts.tsx`.
 - **The map** is the `MAP_ROWS` grid in `src/game/map.ts` (`T` tree, `~` water, `#` path, `f` flowers, `.` grass). Buildings, their door tiles and the coins are defined below it.
 
+### Social preview image
+
+Link previews (LinkedIn, X, Slack, WhatsApp...) use the Open Graph tags in `index.html` and `public/og-image.png` (1200×630). The image is rendered from a dev-only page in `og/`, which isn't part of the production build. To regenerate it after changing the town or your details:
+
+```bash
+npm run dev   # note the port, e.g. 5173
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars \
+  --force-device-scale-factor=1 --window-size=1200,630 --virtual-time-budget=6000 \
+  --screenshot=public/og-image.png http://localhost:5173/og/
+```
+
+Sites cache previews, so after changing the image, refresh it with LinkedIn's [Post Inspector](https://www.linkedin.com/post-inspector/) or Facebook's [Sharing Debugger](https://developers.facebook.com/tools/debug/).
+
 ## Built with
 
 React 19, TypeScript and Vite. There's no game engine: the map is a CSS grid, the player is an SVG pixel sprite, and fonts come from Google Fonts (Press Start 2P, Pixelify Sans, Inter).
